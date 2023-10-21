@@ -4,5 +4,26 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: cb6d87b6687ff7a45b2abd6d9fc0bfd6
+  - enabled: 1
+    path: Assets/Scenes/Races/Tutorial Races/Test_Race_1.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Races/Tutorial Races/Test_Race_2.unity
+    guid: b1627cd812d13a448afebeef4e33a37a
+  - enabled: 1
+    path: Assets/Scenes/Races/Tutorial Races/Test_Race_3.unity
+    guid: a85d7f8eebf0ff0498c93c02b453fa73
+  - enabled: 1
+    path: Assets/Scenes/Races/TestTracks/Test_Race_4.unity
+    guid: 109982f576a6e0d40adc3f4007d0bd0f
+  - enabled: 1
+    path: Assets/Scenes/Races/TestTracks/Test_Race_5.unity
+    guid: 89a4005cd56cc46468759d996ae031d2
+  - enabled: 1
+    path: Assets/Scenes/Races/TestTracks/Test_Race_6.unity
+    guid: 37fb95a029cd6e24eba6795222846ab3
   m_configObjects: {}

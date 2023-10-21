@@ -43,6 +43,7 @@ public class Car : MonoBehaviour
     public float EngineMaxRpm => engineMaxRpm;
 
     private CarChassis chassis;
+    public Rigidbody Rigidbody => chassis == null? GetComponent<CarChassis>().Rigidbody: chassis.Rigidbody;
 
     //Debug
     [SerializeField] private float linearVelocity;
@@ -131,7 +132,26 @@ public class Car : MonoBehaviour
         engineRpm = Mathf.Clamp(engineRpm, engineMinRpm, engineMaxRpm);
 
         engineTorque = engineTorqueCurve.Evaluate(engineRpm / engineMaxRpm) * engineMaxTorque * finalDriveRatio * Mathf.Sign(selectedGear) * gears[0];
+    }
 
+    public void Reset()
+    {
+        chassis.Reset();
 
+        chassis.MotorTorque = 0;
+        chassis.BrakeTorque = 0;
+        chassis.SteerAngle = 0;
+
+        ThrottleControl = 0;
+        BrakeControl = 0;
+        SteerControl = 0;
+    }
+
+    public void Respawn(Vector3 position, Quaternion rotation)
+    {
+        Reset();
+
+        transform.position = position;
+        transform.rotation = rotation;
     }
 }

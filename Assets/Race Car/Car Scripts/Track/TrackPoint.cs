@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class TrackPoint : MonoBehaviour
 {
     public event UnityAction<TrackPoint> Triggered;
+    protected virtual void OnPassed() { }
+    protected virtual void OnAssignTarget() { }
 
     public TrackPoint Next;
     public bool IsFirst;
@@ -17,16 +17,26 @@ public class TrackPoint : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.root.GetComponent<Car>() == null) return;
+
         Triggered?.Invoke(this);
     }
 
     public void Passed()
     {
         isTarget = false;
+        OnPassed();
     }
 
     public void AssignAsTarget()
     {
         isTarget = true;
+        OnAssignTarget();
+    }
+
+    public void Reset()
+    {
+        Next = null;
+        IsFirst = false;
+        IsLast = false;
     }
 }

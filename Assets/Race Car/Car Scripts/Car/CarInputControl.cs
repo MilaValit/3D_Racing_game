@@ -18,7 +18,6 @@ public class CarInputControl : MonoBehaviour
 
     private void Update()
     {
-
         wheelSpeed = car.WheelSpeed;
 
         UpdateAxis();
@@ -51,8 +50,8 @@ public class CarInputControl : MonoBehaviour
         {
             car.ShiftToFirstGear();
         }
-
     }
+
     private void UpdateSteer()
     {
         car.SteerControl = steerCurve.Evaluate(car.WheelSpeed / car.MaxSpeed) * horizontalAxis;
@@ -71,5 +70,22 @@ public class CarInputControl : MonoBehaviour
         verticalAxis = Input.GetAxis("Vertical");
         horizontalAxis = Input.GetAxis("Horizontal");
         handbreakAxis = Input.GetAxis("Jump");
+    }
+
+    public void Reset()
+    {
+        verticalAxis = 0;
+        horizontalAxis = 0;
+        handbreakAxis = 0;
+
+        car.ThrottleControl = 0;
+        car.SteerControl = 0;
+        car.BrakeControl = 0;
+    }
+
+    public void Stop()
+    {
+        Reset();
+        car.BrakeControl = 1;
     }
 }

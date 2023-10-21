@@ -29,6 +29,7 @@ public class CarChassis : MonoBehaviour
     public float LinearVelocity => rigidbody.velocity.magnitude * 3.6f;
 
     private new Rigidbody rigidbody;
+    public Rigidbody Rigidbody => rigidbody ==null ? GetComponent<Rigidbody>(): rigidbody;
 
     private void Start()
     {
@@ -100,5 +101,11 @@ public class CarChassis : MonoBehaviour
             wheelAxles[i].ApllySteerAngle(SteerAngle, wheelBaseLenght);
             wheelAxles[i].ApllyBreakTorque(BrakeTorque);
         }
+    }
+
+    public void Reset()
+    {
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
     }
 }
